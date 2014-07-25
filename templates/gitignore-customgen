@@ -1,0 +1,18 @@
+# Java files #
+*.class
+*.orig
+*.java
+*~
+
+# Acceleo compiled files #
+*.emtl
+*.acceleo
+
+# Eclipse files #
+META-INF/
+tasks/
+bin/
+.settings/
+.classpath
+.project
+
