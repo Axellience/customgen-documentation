@@ -45,7 +45,7 @@ Once your project is imported, it should have errors, don't worry! Acceleo wizar
 
 ## How to Test my Modifications
 
-To launch or test your modifications, here is the current process (this process will change a little bit . You added code you want to test or include in the generator? Simply `push` it your forked repository and launch it in GenMyModel (if you already registered it).
+To launch or test your modifications, here is the current process (this process will quickly change). You added code you want to test or include in the generator? Simply `push` it your forked repository and launch it in GenMyModel (if you already registered it).
 
 ## A Little Example on PHP Custom Generator
 
