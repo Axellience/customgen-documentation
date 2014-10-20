@@ -221,6 +221,7 @@ different model, unless you write in your generator that your want to generate c
 
 ### Why the reverse process is taking so long?
 The reverse engineering process performs 4 main phases:
+
 1. your repository is cloned,
 1. analysis is performed on your code and a first model is produced,
 1. the produced model is refined,
