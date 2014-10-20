@@ -1,11 +1,11 @@
 # GenMyModel Reverse Engineering Documentation
 
-This document gather information about the reverse engineering service, the way to control the model production and the Frequently Asked Questions about it.
+This document gathers information about the reverse engineering service, the way to control the model production and the Frequently Asked Questions about it.
 
 ## Create a model from your source code
 
 GenMyModel reverse engineering service works in a static mode. The reverse engine gets your sources from github or bitbucket, parses them and produces an UML
-model reflecting your code. It never compiles your source code and load it in a JVM.
+model reflecting your code. It never compiles your source code and loads it in a JVM.
 
 To perform a reverse analysis on one of your git repository, go to "New Project from Java" (from the "Project" page, just near the "New project button"). A new
 page will open with, basically, the same information about the "New project" page with new information about your repository. Simply put your git repository
@@ -16,7 +16,7 @@ and click on `Start reverse`.
 
 By default, the reverse service scans your whole repository and performs analysis on the `*.java` files it founds. Obviously, sources could (should?) 
 include unit tests for example or old code that does not need to be part of the analysis. Also, the part of the sources that needs to be reversed is located 
-to a specific directory in your repository. To help you selecting the files you want, the reverse engineering service provides two 
+to a specific directory in your repository. To help you select the files you want, the reverse engineering service provides two 
 kinds of entries, **Folders to include** and **Files and Folders to exclude**. The first kind is a string, indicating from the repository root the path to the 
 directory that needs to be included in the analysis. For examples, if you want to **include** all the java files under two specific locations: 
 ```
@@ -36,7 +36,7 @@ Once again, as for directory/file inclusions, you can enter many regexps.
 
 ## Controlling reverse engineering from the dashboard
 
-GenMyModel reverse engineering service allows you to control the way your model is built using options (_e.g,_ you can remove methods
+GenMyModel reverse engineering service enables you to control the way your model is built using options (_e.g,_ you can remove methods
 from the reversed model or attributes). Keep in mind that these options impact the created model and not your source code! Here is a list 
 of the options you have to control the reverse from the dashboard:
 * **Remove operations**, _false by default_, removes all the class/interface operations (methods) from the model,
@@ -48,7 +48,7 @@ will be produced),
 `myTab : Integer [0..*]` will be produced),
 * **Follow collection bindings**, _false by default_, reduces nested collection bindings and produces a [0..\*] (_e.g,_ from `Set<Set<String>> inner` an attribute
 `inner : String [0..*]` will be produced with `unique` attribute set to `true`),
-* **Add binding expression**, _see below for default value_, allows you to add binding expressions that are used to compute cardinality and reduce them.
+* **Add binding expression**, _see below for default value_, enables you to add binding expressions that are used to compute cardinality and reduce them.
 
 The binding expressions follow this format: `matchingExpr, #binding, unique?`, for example, here is the binding expression used to follow lists and lists-like:
 ```
@@ -66,12 +66,12 @@ Here is an other example: suppose you have in your source code a `JsArray<String
 
 All the above options can be combined and each option can impact the others. For example, with the previous binding expression:
 `^JsArray<.*>, 1, false`, **without** the _follow collection bindings_ option and **with** the _discover associations_ option. Here is 
-what happen if this attribute is found in the source code `JsArray<String> tab`. In the reversed model, an attribute will be created as this:
+what happens if this attribute is found in the source code `JsArray<String> tab`. In the reversed model, an attribute will be created as this:
 `tab : String [0..*]` (as we previously seen). However, if this attribute is found in the source code `JsArray<MyClass> tab2`, an association 
 with one of its cardinality set to [0..\*] will be created in the reversed model.
 
 Here another example: by combining the _remove attributes_ option **with** the _discover associations_ option, the attributes which will be part of associations are 
-let in the model whereas the attribute not involved in associations are removed. Thus, considering this two attributes:
+let in the model whereas the attribute not involved in associations are removed. Thus, considering these two attributes:
 ```
 String name;
 MyClass cl;
@@ -176,7 +176,7 @@ Datatype.
 
 ### Why there is `Unknown.xxxx` datatypes/interfaces/classes?
 You have probably notice that sometimes, there is some Datatypes/Classes/Interfaces named `Unknown.xxxx` in the `genmymodel-reverse` package. As the engine does not compile/execute your
-code, it does not load it in a JVM. In order to deal with import from a class to other types, the engine try to resolve them the best it can, but with wildcard imports the 
+code, it does not load it in a JVM. In order to deal with imports from a class to other types, the engine try to resolve them the best it can, but with wildcard imports the 
 job is not easy. For example:
 ```java
 import org.apache.http.client.*;
@@ -221,6 +221,6 @@ different model, unless you write in your generator that your want to generate c
 
 ### Why the reverse process is taking so long?
 The reverse engineering process performs 4 main phases. The first one is the cloning of your repository, the second one is the reverse phase, the third
-one is the model refinement phase and, finally, the last phase delete the cloned repository. During benchmarks, we observed that in almost 95% of the time, 
+one is the model refinement phase and, finally, the last phase deletes the cloned repository. During benchmarks, we observed that in almost 95% of the time, 
 the repository cloning operation takes the most time. The engine has to get your entire code and git history from your repository and, obviously, if your 
 history is long and big, well... you do the math ;) (of course, we are working on other solution to accelerate this first phase).
