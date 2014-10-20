@@ -70,8 +70,8 @@ what happens if this attribute is found in the source code `JsArray<String> tab`
 `tab : String [0..*]` (as we previously seen). However, if this attribute is found in the source code `JsArray<MyClass> tab2`, an association 
 with one of its cardinality set to [0..\*] will be created in the reversed model.
 
-Here another example: by combining the _remove attributes_ option **with** the _discover associations_ option, the attributes which will be part of associations are 
-let in the model whereas the attribute not involved in associations are removed. Thus, considering these two attributes:
+Here is another example: by combining the _remove attributes_ option **with** the _discover associations_ option, the attributes which will be part of associations are 
+let in the model whereas the attribute not involved in associations are removed. Thus, considering this two attributes:
 ```
 String name;
 MyClass cl;
