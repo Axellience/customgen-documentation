@@ -4,8 +4,8 @@ This document gather information about the reverse engineering service, the way 
 
 ## Create a model from your source code
 
-GenMyModel reverse engineering service works in a static mode. The reverse engine gets your sources from github or bitbucket, parses them and produces an UML
-model reflecting your code. It never compiles your source code and load it in a JVM.
+GenMyModel reverse engineering service works in a static mode. **The reverse engine gets your sources from github or bitbucket, parses them and produces an UML
+model reflecting your code. It never compiles your source code and load it in a JVM.**
 
 To perform a reverse analysis on one of your git repository, go to "New Project from Java" (from the "Project" page, just near the "New project button"). A new
 page will open with, basically, the same information about the "New project" page with new information about your repository. Simply put your git repository
@@ -220,7 +220,11 @@ part of your model during generation (only during generation process). You can s
 different model, unless you write in your generator that your want to generate code for them, they will not be translated to code.
 
 ### Why the reverse process is taking so long?
-The reverse engineering process performs 4 main phases. The first one is the cloning of your repository, the second one is the reverse phase, the third
-one is the model refinement phase and, finally, the last phase delete the cloned repository. During benchmarks, we observed that in almost 95% of the time, 
-the repository cloning operation takes the most time. The engine has to get your entire code and git history from your repository and, obviously, if your 
-history is long and big, well... you do the math ;) (of course, we are working on other solution to accelerate this first phase).
+The reverse engineering process performs 4 main phases:
+1. your repository is cloned,
+1. analysis is performed on your code and a first model is produced,
+1. the produced model is refined,
+1. the cloned repository is deleted.
+
+During benchmarks, we observed that in almost 95% of the time, the repository cloning operation takes the most time. The engine has to get your entire code and git history from your
+repository and, obviously, if your history is long and big, well... you do the math ;) (of course, we are working on other solution to accelerate this first phase).
