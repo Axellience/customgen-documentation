@@ -28,6 +28,7 @@ Or you can enter two regular expressions and remove everything under the `test` 
 ![](./imgs/revSecondImpBis.png)
 
 You decide which one you prefered, the result is the same, the `.*Test.java` classes and the `Main.java` will disappear from the produced model.
+
 ![](./imgs/revSecondRes.png)
 
 ## Shape your model
@@ -47,4 +48,5 @@ Once the reverse process is done, you can see that the datatype `calc.CalcExp[]`
 
 The corresponding (part of) diagram obtained after drag and drop is the following:
 ![](./imgs/revThirdRes2.png)
+
 The `array` property is no longer contained in the `CollectionExp` but is part of an association with cardinality `[0..*]`. Why this option gave birth to an association rather than an attribute? Simply because of the options set before the reverse operation. The option `Discover associations` was also set. If you want to have a `array : CalcExp [0..*]` attribute, you should restart the previous process and unselect the `Discover associations` option. More information about options combining can be found here: [https://github.com/Axellience/customgen-documentation/blob/develop/reverse.md]()
